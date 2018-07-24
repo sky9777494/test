@@ -1,25 +1,92 @@
-<!DOCTYPE HTML>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=640, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
-<title>ch13</title>
-<script src='../lib/quintus.js'></script>
-<script src='../lib/quintus_audio.js'></script>
-<script src='../lib/quintus_sprites.js'></script>
-<script src='../lib/quintus_scenes.js'></script>
-<script src='../lib/quintus_input.js'></script>
-<script src='../lib/quintus_touch.js'></script>
-<script src='../lib/quintus_2d.js'></script>
-<script src='../lib/quintus_tmx.js'></script>
-<script src='../lib/quintus_touch.js'></script>
-<script src='../lib/quintus_ui.js'></script>
-<script src='../lib/quintus_anim.js'></script>
-<script src='box_man.js'></script>
-<style> 
-  body { padding:0px; margin:0px; background-color:black ; } 
-</style>
+<meta charset="UTF-8" />
+<title>CSS PANIC - just do it</title>
+	<script type = "text/javascript">
+	var message="This game is recommended to\n"
+	var message=message+"use Google chrome 67 or above\n"
+	var message=message+"and 1024*768 or above\n"
+	function notice(){alert(message)}
+	</script> 
+<link rel="stylesheet" type="text/css" href="style2.css" />
 </head>
-<body>
+<body onload="notice()">
+
+<!-- 遊戲背景 -->
+<div id="game">
+
+	<!-- 遊戲結束 -->
+	<a id="gameover" href=""></a>
+
+	<!-- 時間 -->
+	<div id="timer">
+		<!-- 時間條 -->
+		<div id="progress"></div>
+	</div>
+
+
+	<!-- 土撥鼠 -->
+	<div id="enemy">
+		<input type="radio" name="enemy_1" id="enemy_1" class="enemys" ><div class="effect">
+		
+		</div>
+		<input type="radio" name="enemy_2" id="enemy_2" class="enemys"><div class="effect">
+
+		</div>
+		<input type="radio" name="enemy_3" id="enemy_3" class="enemys"><div class="effect">
+		
+		</div>
+		<input type="radio" name="enemy_4" id="enemy_4" class="enemys"><div class="effect">
+
+		</a>		
+		</div>
+		<input type="radio" name="enemy_5" id="enemy_5" class="enemys"><div class="effect">
+
+		</div>
+		<input type="radio" name="enemy_6" id="enemy_6" class="enemys"><div class="effect">
+
+		</div>
+		<input type="radio" name="enemy_7" id="enemy_7" class="enemys"><div class="effect">
+		
+		</div>
+		<input type="radio" name="enemy_8" id="enemy_8" class="enemys"><div class="effect">
+	
+		</div>
+		<input type="radio" name="enemy_9" id="enemy_9" class="enemys"><div class="effect">
+		
+		</div>
+		<input type="radio" name="enemy_10" id="enemy_10" class="enemys"><div class="effect">
+	
+		</div>
+	</div>
+
+	<!-- 土堆 -->
+	<div id="mound"></div>	
+	
+	<!-- 記分板 -->
+	<div id="score_board">
+		<!-- 分數顯示區域 -->
+		<div id="score_wrap">
+			<div id="score">
+				<!-- 土撥鼠死掉時 -->
+				<input type="radio" name="enemy_1" id="score_1" class="score" checked>
+				<input type="radio" name="enemy_2" id="score_2" class="score" checked>
+				<input type="radio" name="enemy_3" id="score_3" class="score" checked>
+				<input type="radio" name="enemy_4" id="score_4" class="score" checked>
+				<input type="radio" name="enemy_5" id="score_5" class="score" checked>
+				<input type="radio" name="enemy_6" id="score_6" class="score" checked>
+				<input type="radio" name="enemy_7" id="score_7" class="score" checked>
+				<input type="radio" name="enemy_8" id="score_8" class="score" checked>
+				<input type="radio" name="enemy_9" id="score_9" class="score" checked>
+				<input type="radio" name="enemy_10" id="score_10" class="score" checked>
+				<!-- 分數 -->
+				<div class="score" id="score_11"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
 </body>
 </html>
+							

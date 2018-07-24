@@ -1,0 +1,625 @@
+/* *字號代表所有標籤繼承{}內屬性 */
+* {
+	/*
+	邊界設定為0
+	展開設定為0
+	文字大小設定為12px像素
+	文字行高 1.2px像素
+	*/
+    margin:0;
+    padding:0;
+    font-size:12px;
+    line-height:1.2px;
+}
+
+html{
+	/*設定黑色背景*/
+    background:#000;
+}
+
+body{
+	/*
+	寬度設為465px像素
+	高度設為465px像素
+	控制卷軸設為隱藏
+	*/
+    width:465px;
+    height:465px;
+    overflow:hidden;
+}
+
+
+/* 遊戲背景 */
+#game{
+	/*
+	排版position位置設為relative相對位置
+	background-position背景位置(x, y)都設為0px
+	background-repeat背景重複設為no-repeat不重複
+	auto為自動預設
+	*/
+    position:relative;
+    width:319px;
+    height:375px;
+    overflow:hidden;
+    margin:40px auto 0;
+    background-position:0px 0px;
+    background-repeat:no-repeat;
+}
+
+/* 鼠標設定 */
+*{
+    -webkit-user-select:none;
+    -moz-user-select:none;
+}
+
+
+/* 遊戲結束背景 */
+#gameover{
+	/*
+	position位置設為 absolute絕對位置
+	top上0px
+	left左0px
+	background背景的rgba(r,g,b,a)都設為0,0,0,0.5半透明
+	-webkit-animation-name動畫名為gameover
+	-webkit-animation-timing-function動畫特效為linear線性
+	-webkit-animation-duration動畫播放所需時間設為13s 13秒
+	-webkit-animation-delay動畫播放延遲時間設為0.5s 0.5秒
+	z-index Z軸圖層設定為20;
+	opacity透明度設定為1不透明
+	*/
+    position:absolute;
+    top:0;
+    left:0;
+    width:319px;
+    height:375px;
+    background:rgba(0,0,0,0.5);
+    -webkit-animation-name:gameover;
+     -webkit-animation-timing-function:linear;
+    -webkit-animation-duration:13s;
+    -webkit-animation-delay:0.5s;
+    z-index:20;
+    background-position:0px 0px;
+    background-repeat:no-repeat;
+    opacity:1;
+}
+
+
+/* 動畫 遊戲結束畫面 */
+@-webkit-keyframes gameover{
+	/*
+	%數為動畫的時間軸長度百分比
+	*/
+      0% {top:-465px; opacity:1;}
+      97% {top:-465px; opacity:0;}
+    100% {top:0px; opacity:1;}
+}
+
+
+/* 時間條背景 */
+#timer{
+    position:absolute;
+    top:310px;
+    left:5px;
+    z-index:10;
+    width:309px;
+    height:50px;
+    background-position:0px 0px;
+    background-repeat:no-repeat;
+}
+
+/* 時間條 */
+#progress{
+    position:absolute;
+    top:7px;
+    left:114px;
+    width:170px;
+    height:36px;
+    background-position:0px 0px;
+    background-repeat:repeat-x;
+    -webkit-animation-name:progress;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-duration:12.5s;
+    -webkit-animation-delay:0.5s;
+}
+
+/* 動畫 時間條 */
+@-webkit-keyframes progress{
+	/*
+	照著12.5秒時間變長
+	*/
+      0% {width:0px;}
+    100% {width:170px;}
+}
+
+
+/* 土撥鼠 顯示區域 */
+#enemy{
+    position: absolute;
+    top:150px;
+    left:0;
+    width:319px;
+    height:100px;
+    overflow: hidden;
+}
+
+/* 繪製土撥鼠 */
+.enemys{
+	/*
+	display顯示設為 block區塊
+	-webkit-appearance和-moz-appearance 介面元素設為button按鈕
+	-webkit-animation-iteration-count動畫播放次數設為infinite無限次
+	cursor鼠標顯示設為pointer手
+	border框線設為none無
+	outline外框線設為none無;
+	*/
+    z-index:3;
+    position:absolute;
+    top:0px;
+    left:0;
+    width:49px;
+    height:49px;
+    display:block;
+    -webkit-appearance:button;
+    -moz-appearance:button;
+    background-position:0px 0px;
+    background-repeat:no-repeat;
+    -webkit-animation-iteration-count:infinite;
+    cursor:pointer;
+    opacity:0.9;
+    border:none;
+    outline:none;
+}
+
+/* 土撥鼠死掉時 */
+.enemys:checked{
+	/*
+	-webkit-animation-name動畫名設為none無	
+    -webkit-pointer-events和pointer-events按鍵事件都設為none無;
+	*/
+    overflow:hidden;
+    -webkit-animation-name:none;
+    -webkit-pointer-events:none;
+    pointer-events:none;
+    opacity:0;
+}
+
+/* 鼠標滑在土撥鼠上時 */
+.enemys:hover{	
+	opacity:1;
+}
+
+
+/* 繪製土堆 */
+#mound{
+    position:absolute;
+    z-index:5;
+    top:160px;
+    left:0;
+    display:block;
+    width:319px;
+    height:200px;
+    -webkit-pointer-events:none;
+    pointer-events:none;
+    background-position:0px 10px;
+    background-repeat:no-repeat;
+}
+
+/* 土堆 遮罩設定 */
+#mound .mask{
+    position:absolute;
+    -webkit-pointer-events:auto;
+    pointer-events:auto;
+}
+
+
+/* 繪製記分板 */
+#score_board{
+    position:absolute;
+    top:85px;
+    left:85px;
+    width:157px;
+    height:105px;
+    z-index:10;
+    background-position:0px 0px;
+    background-repeat:no-repeat;	
+}
+
+/* 分數 顯示區域 */
+#score_wrap{
+  position: absolute;
+  top:23px;
+  top:22px;
+  left:25px;
+  width: 111px;
+  height: 63.5px;
+  overflow: hidden;
+}
+
+/* 繪製分數數字 */
+#score_11{
+    position:relative;
+    display:block;
+    width: 111px;
+    height: 694px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-position:0px 0px;
+    background-repeat:no-repeat;
+}
+
+/* 分數起始位置 */
+#score{
+  position: absolute;
+  top: -640px;
+  left:0;
+  width: 111px;
+  height: 694px;
+}
+
+/* 動畫 跳分數 */
+.score{
+	/*
+	-webkit-transition動畫移動設為.1s linear 0.1秒線性移動
+	height每次移動的高度設為63.5px 63.5像素位置
+	*/
+    position:relative;
+    display:block;
+    width:111px;
+    height:63.5px;
+    background-color:transparent;
+    -webkit-appearance:button;
+    -moz-appearance:button;
+    -webkit-transition:.1s linear;
+}
+
+/* 分數歸零 */
+.score:checked{
+    position:absolute;
+    top:0px;
+    height:0px;
+}
+
+
+
+/* 土撥鼠出生起始位置 */
+/*
+1跟6同出生位置 
+2跟7同出生位置
+3跟8同出生位置
+4跟9同出生位置
+5跟10同出生位置
+*/
+.enemys#enemy_1 {top:-93px; left:12px;}
+.enemys#enemy_2 {top:-93px; left:74px;}
+.enemys#enemy_3 {top:-93px; left:135px;}
+.enemys#enemy_4 {top:-93px; left:196px;}
+.enemys#enemy_5 {top:-93px; left:258px;}
+.enemys#enemy_6 {top:-93px; left:12px;}
+.enemys#enemy_7 {top:-93px; left:74px;}
+.enemys#enemy_8 {top:-93px; left:135px;}
+.enemys#enemy_9 {top:-93px; left:196px;}
+.enemys#enemy_10{top:-93px; left:258px;}
+
+
+/* 繪製土撥鼠被打時的特效 */
+.enemys:checked + .effect{}
+.effect {
+    position:absolute;
+    z-index:21;
+    width: 106px;
+    height: 98px;
+    -webkit-pointer-events: none;
+    pointer-events: none;
+    background-position:0px 0px;
+    background-repeat:no-repeat;
+    opacity:0;
+}
+
+/* 特效排版 */
+#enemy_1  + .effect{top:0px; left:0px;}
+#enemy_2  + .effect{top:0px; left:50px;}
+#enemy_3  + .effect{top:0px; left:105px;}
+#enemy_4  + .effect{top:0px; left:164px;}
+#enemy_5  + .effect{top:0px; left:214px;}
+#enemy_6  + .effect{top:0px; left:0px;}
+#enemy_7  + .effect{top:0px; left:50px;}
+#enemy_8  + .effect{top:0px; left:105px;}
+#enemy_9  + .effect{top:0px; left:164px;}
+#enemy_10 + .effect{top:0px; left:214px;}
+
+/* 設定特效動畫播放 */
+.enemys:checked + .effect{
+  -webkit-animation-duration:0.5s;
+  -webkit-animation-iteration-count:1;
+  -webkit-animation-direction: normal;
+}
+
+/* 設定各土撥鼠死亡時 不同特效動畫 */
+#enemy_1:checked  + .effect,
+#enemy_2:checked  + .effect,
+#enemy_3:checked  + .effect,
+#enemy_4:checked  + .effect,
+#enemy_5:checked  + .effect{
+  -webkit-animation-name:effect1;
+}
+#enemy_6:checked  + .effect,
+#enemy_7:checked  + .effect,
+#enemy_8:checked  + .effect,
+#enemy_9:checked  + .effect,
+#enemy_10:checked + .effect{
+  -webkit-animation-name:effect2;
+}
+
+/* 動畫 特效淡出淡入 */
+@-webkit-keyframes effect1{
+	/*
+	-webkit-transform 動畫移動設定
+	translateX(0px) 預移動X位置(該像素位置值)
+	translateY(0px) 預移動Y位置(該像素位置值)
+	*/
+      0% { -webkit-transform: translateX(0px) translateY(0px); opacity:0;}
+     30% { -webkit-transform: translateX(-10px) translateY(-10px); opacity:1;}
+     80% { -webkit-transform: translateX(-10px) translateY(-10px); opacity:1;}
+    100% { -webkit-transform: translateX(0px) translateY(0px); opacity:0;}
+}
+
+@-webkit-keyframes effect2{
+      0% { -webkit-transform: translateX(0px) translateY(0px); opacity:0;}
+     30% { -webkit-transform: translateX(10px) translateY(-10px); opacity:1;}
+     80% { -webkit-transform: translateX(10px) translateY(-10px); opacity:1;}
+    100% { -webkit-transform: translateX(0px) translateY(0px); opacity:0;}
+}
+
+
+/* 動畫 土撥鼠1的 動畫AI設定 */
+@-webkit-keyframes enemy_1{
+	/*
+	隱藏全身位置設為 200px
+	露出半身位置設為 160px
+	全身出現位置設為 145px
+	*/
+      0% {-webkit-transform:translateY(200px);}
+     40% {-webkit-transform:translateY(135px);}
+     50% {-webkit-transform:translateY(200px);}
+     90% {-webkit-transform:translateY(200px);}
+    100% {-webkit-transform:translateY(200px);}
+}
+
+/* 設定土撥鼠1的動畫播放 */
+#enemy_1{
+    -webkit-animation-name:enemy_1;
+    -webkit-animation-duration:5s;
+    -webkit-animation-delay:0s;
+}
+
+/* 動畫 土撥鼠6的 動畫AI設定 */
+@-webkit-keyframes enemy_6{
+      0% {-webkit-transform:translateY(200px);}
+     40% {-webkit-transform:translateY(200px);}
+     50% {-webkit-transform:translateY(135px);}
+     90% {-webkit-transform:translateY(135px);}
+    100% {-webkit-transform:translateY(200px);}
+}
+
+/* 設定土撥鼠6的動畫播放 */
+#enemy_6{
+    -webkit-animation-name:enemy_6;
+    -webkit-animation-duration:5s;
+    -webkit-animation-delay:0s;
+}
+
+/* 動畫 土撥鼠2的 動畫AI設定 */
+@-webkit-keyframes enemy_2{
+      0% {-webkit-transform:translateY(200px);}
+     40% {-webkit-transform:translateY(200px);}
+     50% {-webkit-transform:translateY(135px);}
+     90% {-webkit-transform:translateY(135px);}
+    100% {-webkit-transform:translateY(200px);}
+}
+
+/* 設定土撥鼠2的動畫播放 */
+#enemy_2{
+    -webkit-animation-name:enemy_2;
+    -webkit-animation-duration:5s;
+    -webkit-animation-delay:1s;
+}
+
+/* 動畫 土撥鼠7的 動畫AI設定 */
+@-webkit-keyframes enemy_7{
+      0% {-webkit-transform:translateY(200px);}
+     20% {-webkit-transform:translateY(135px);}
+     30% {-webkit-transform:translateY(200px);}
+     40% {-webkit-transform:translateY(135px);}
+     45% {-webkit-transform:translateY(200px);}
+     50% {-webkit-transform:translateY(200px);}
+     90% {-webkit-transform:translateY(200px);}
+    100% {-webkit-transform:translateY(200px);}
+}
+
+/* 設定土撥鼠7的動畫播放 */
+#enemy_7{
+    -webkit-animation-name:enemy_7;
+    -webkit-animation-duration:5s;
+    -webkit-animation-delay:1s;
+}
+
+/* 動畫 土撥鼠3的 動畫AI設定 */
+@-webkit-keyframes enemy_3{
+      0% {-webkit-transform:translateY(200px);}
+     40% {-webkit-transform:translateY(200px);}
+     50% {-webkit-transform:translateY(135px);}
+     60% {-webkit-transform:translateY(135px);}
+     90% {-webkit-transform:translateY(200px);}
+    100% {-webkit-transform:translateY(200px);}
+}
+
+/* 設定土撥鼠3的動畫播放 */
+#enemy_3{
+    -webkit-animation-name:enemy_3;
+    -webkit-animation-duration:10s;
+    -webkit-animation-delay:2s;
+}
+
+/* 動畫 土撥鼠8的 動畫AI設定 */
+@-webkit-keyframes enemy_8{
+      0% {-webkit-transform:translateY(200px);}
+     10% {-webkit-transform:translateY(135px);}
+     15% {-webkit-transform:translateY(200px);}
+     20% {-webkit-transform:translateY(135px);}
+     25% {-webkit-transform:translateY(200px);}
+     30% {-webkit-transform:translateY(135px);}
+     40% {-webkit-transform:translateY(200px);}
+     50% {-webkit-transform:translateY(200px);}
+     70% {-webkit-transform:translateY(200px);}
+     90% {-webkit-transform:translateY(135px);}
+    100% {-webkit-transform:translateY(200px);}
+}
+
+/* 設定土撥鼠8的動畫播放 */
+#enemy_8{
+    -webkit-animation-name:enemy_8;
+    -webkit-animation-duration:10s;
+    -webkit-animation-delay:2s;
+}
+
+/* 動畫 土撥鼠4的 動畫AI設定 */
+@-webkit-keyframes enemy_4{
+      0% {-webkit-transform:translateY(200px);}
+     30% {-webkit-transform:translateY(160px);}
+     50% {-webkit-transform:translateY(135px);}
+     60% {-webkit-transform:translateY(200px);}
+     90% {-webkit-transform:translateY(200px);}
+    100% {-webkit-transform:translateY(200px);}
+}
+
+/* 設定土撥鼠4的動畫播放 */
+#enemy_4{
+    -webkit-animation-name:enemy_4;
+    -webkit-animation-duration:10s;
+    -webkit-animation-delay:1s;
+}
+
+/* 動畫 土撥鼠9的 動畫AI設定 */
+@-webkit-keyframes enemy_9{
+      0% {-webkit-transform:translateY(200px);}
+     20% {-webkit-transform:translateY(200px);}
+     30% {-webkit-transform:translateY(200px);}
+     60% {-webkit-transform:translateY(200px);}
+     70% {-webkit-transform:translateY(135px);}
+     75% {-webkit-transform:translateY(160px);}
+     80% {-webkit-transform:translateY(135px);}
+     85% {-webkit-transform:translateY(160px);}
+     90% {-webkit-transform:translateY(135px);}
+    100% {-webkit-transform:translateY(200px);}
+}
+
+/* 設定土撥鼠9的動畫播放 */
+#enemy_9{
+    -webkit-animation-name:enemy_9;
+    -webkit-animation-duration:10s;
+    -webkit-animation-delay:1s;
+}
+
+/* 動畫 土撥鼠5的 動畫AI設定 */
+@-webkit-keyframes enemy_5{
+      0% {-webkit-transform:translateY(200px);}
+     30% {-webkit-transform:translateY(9200px);}
+     60% {-webkit-transform:translateY(135px);}
+    100% {-webkit-transform:translateY(200px);}
+}
+
+/* 設定土撥鼠5的動畫播放 */
+#enemy_5{
+    -webkit-animation-name:enemy_5;
+    -webkit-animation-duration:10s;
+    -webkit-animation-delay:2s;
+}
+
+/* 動畫 土撥鼠10的 動畫AI設定 */
+@-webkit-keyframes enemy_10{
+      0% {-webkit-transform:translateY(200px);}
+     5% {-webkit-transform:translateY(135px);}
+     30% {-webkit-transform:translateY(200px);}
+     60% {-webkit-transform:translateY(200px);}
+     90% {-webkit-transform:translateY(200px);}
+    100% {-webkit-transform:translateY(200px);}
+}
+
+/* 設定土撥鼠10的動畫播放 */
+#enemy_10{
+    -webkit-animation-name:enemy_10;
+    -webkit-animation-duration:10s;
+    -webkit-animation-delay:1s;
+}
+
+
+/* 遊戲結束背景圖檔路徑 */
+#gameover{
+    background-image: url(img/gophers-Slice_Gameover.png);
+}
+	
+/* 遊戲場景圖檔路徑 */
+#game{
+	background-image: url(img/gophers-Slice_Background.png);
+}
+	
+/* 時間條背景圖檔路徑 */
+#timer{
+    background-image: url(img/gophers-Slice_Timeboard.png);
+}
+
+/* 時間條圖檔路徑 */	
+#progress{
+    background-image: url(img/gophers-Slice_time-line.png);
+}
+	
+/* 土撥鼠1 7 9 10的圖擋路徑 */
+.enemys#enemy_1,.enemys#enemy_7,.enemys#enemy_8,.enemys#enemy_9,.enemys#enemy_10{
+    background-image: url(img/gophers-6.png);
+}
+
+/* 土撥鼠2的圖擋路徑 */
+.enemys#enemy_2{
+    background-image: url(img/gophers-6.png);
+}
+
+/* 土撥鼠3的圖擋路徑 */
+.enemys#enemy_3{
+    background-image: url(img/gophers-6.png);
+}
+
+/* 土撥鼠4的圖擋路徑 */
+.enemys#enemy_4{
+    background-image: url(img/gophers-6.png);
+}
+
+/* 土撥鼠5的圖擋路徑 */
+.enemys#enemy_5{
+    background-image: url(img/gophers-6.png);
+}
+
+/* 土撥鼠6的圖擋路徑 */
+.enemys#enemy_6{
+    background-image: url(img/gophres-6.png);
+}
+
+/* 土堆的圖擋路徑 */
+#mound{
+    background-image: url(img/gophers-Slice_Mound.png);
+}
+
+/* 記分板的圖擋路徑 */
+#score_board{
+    background-image: url(img/gophers-Slice_Scoreboard.png);
+}
+	
+/* 分數的圖擋路徑 */	
+#score_11{
+    background-image: url(img/gophers-Slice_Score-2.png);
+}
+	
+/* 特效的圖擋路徑 */
+.effect {
+    background-image: url(img/gophers-Slice_Boom.png);
+}
+	
